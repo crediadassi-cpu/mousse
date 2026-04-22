@@ -53,16 +53,16 @@ class Match:
 
 # classe Tournoi
 class Tournoi:
-
+ 
     def __init__(self, nom):
         self.nom = nom
         self.participants = []
         self.tour = 1
-
+ 
     # ajouter un participant au tournoi
     def ajouter_participant(self, p):
         self.participants.append(p)
-
+ 
     # afficher tous les participants
     def afficher_participants(self):
         print("\n==== LISTE DES PARTICIPANTS ====")
@@ -72,49 +72,49 @@ class Tournoi:
             print(p)
             i = i + 1
         print("================================")
-
+ 
     # creer les matchs du tour
     def generer_matchs(self):
         random.shuffle(self.participants)
         matchs = []
         qualifie = None
-
+ 
         # si nombre impair un joueur passe directement
         if len(self.participants) % 2 != 0:
             qualifie = self.participants.pop()
             print(f"\n  {qualifie} passe ce tour sans jouer")
-
+ 
         i = 0
         while i < len(self.participants):
             m = Match(self.participants[i], self.participants[i+1])
             matchs.append(m)
             i = i + 2
-
+ 
         return matchs, qualifie
-
+ 
     # jouer un tour complet
     def jouer_tour(self, mode="manuel"):
         print(f"\n===== TOUR {self.tour} =====")
         matchs, qualifie = self.generer_matchs()
-
+ 
         gagnants = []
         for match in matchs:
             match.jouer(mode)
             match.afficher()
             gagnants.append(match.vainqueur)
-
+ 
         if qualifie != None:
             gagnants.append(qualifie)
-
+ 
         self.participants = gagnants
         self.tour = self.tour + 1
-
+ 
     # lancer tout le tournoi
     def lancer_tournoi(self, mode="manuel"):
         print(f"\n===== TOURNOI : {self.nom} =====")
         self.afficher_participants()
-
+ 
         while len(self.participants) > 1:
             self.jouer_tour(mode)
-
+ 
         print(f"\n===== VAINQUEUR FINAL : {self.participants[0]} =====")
