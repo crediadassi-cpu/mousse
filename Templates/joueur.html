@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block contenu %}
+
+<h1>JOUEUR {{ index + 1 }} / {{ nb }}</h1>
+<div class="trait"></div>
+<p class="sous-titre">Sport : <span style="color:#ffa500; font-weight:500;">{{ sport }}</span></p>
+
+{% if erreur %}
+<div class="erreur">{{ erreur }}</div>
+{% endif %}
+
+<div class="carte">
+    <form method="POST">
+        <div class="form-group">
+            <label>Nom</label>
+            <input type="text" name="nom" placeholder="Nom du joueur">
+        </div>
+
+        <div class="form-group">
+            <label>Prénom</label>
+            <input type="text" name="prenom" placeholder="Prénom du joueur">
+        </div>
+
+        <div class="form-group">
+            <label>Pseudo</label>
+            <input type="text" name="pseudo" placeholder="Pseudo en jeu">
+        </div>
+
+        <div class="form-group">
+            <label>Niveau</label>
+            <select name="niveau">
+                <option value="Debutant">Débutant</option>
+                <option value="Intermediaire">Intermédiaire</option>
+                <option value="Avance">Avancé</option>
+                <option value="Expert">Expert</option>
+                <option value="Professionnel">Professionnel</option>
+            </select>
+        </div>
+
+        <div class="btn-groupe">
+            {% if index < nb - 1 %}
+            <button type="submit" class="btn btn-rouge">Joueur suivant →</button>
+            {% else %}
+            <button type="submit" class="btn btn-rouge">Terminer ✓</button>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

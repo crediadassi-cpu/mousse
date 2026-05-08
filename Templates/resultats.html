@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block contenu %}
+
+<h1>TOUR {{ tournoi.tour - 1 }}</h1>
+<div class="trait"></div>
+<p class="sous-titre">Résultats des matchs</p>
+
+<div class="carte">
+    {% for r in resultats %}
+    <div class="match-ligne">
+        <span style="text-align:right;">{{ r.p1 }}</span>
+        <span class="score-box">{{ r.s1 }} — {{ r.s2 }}</span>
+        <span>{{ r.p2 }}</span>
+        <span class="gagnant-tag">✓ {{ r.gagnant }}</span>
+    </div>
+    {% endfor %}
+
+    {% if qualifie %}
+    <p class="bye">{{ qualifie }} — passe automatiquement (BYE)</p>
+    {% endif %}
+</div>
+
+{% if vainqueur %}
+<div class="vainqueur-box">
+    <div class="trophee">🏆</div>
+    <h2>Vainqueur Final</h2>
+    <div class="nom">{{ vainqueur }}</div>
+</div>
+<br>
+<a href="/" class="btn btn-rouge">Retour Accueil</a>
+
+{% else %}
+<div class="btn-groupe">
+    <a href="/tournoi" class="btn btn-rouge">Tour suivant →</a>
+    <a href="/" class="btn btn-contour">Accueil</a>
+</div>
+{% endif %}
+
+{% endblock %}

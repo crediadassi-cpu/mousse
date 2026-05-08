@@ -30,6 +30,12 @@ SPORTS_DISPONIBLES =[
     "Overwatch",
     
 ]
+NIVEAUX_DISPONIBLES = [
+    "Débutant",
+    "Intermédiaire",
+    "Avancé"
+    ]
+
 
 #Afficher la liste des sports
 def afficher_sports():
@@ -58,7 +64,7 @@ def choisir_sport():
 # afficher la liste des niveaux
 def afficher_niveaux():
     print("\n  Niveaux :")
-    for i in range(len(NIVEAU_DISPONIBLES)):
+    for i in range(len(NIVEAUX_DISPONIBLES)):
         print(f"    {i+1}. {NIVEAUX_DISPONIBLES[i]}")
  
  

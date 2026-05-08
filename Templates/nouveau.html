@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block contenu %}
+
+<h1>NOUVEAU TOURNOI</h1>
+<div class="trait"></div>
+<p class="sous-titre">Configurez votre tournoi avant d'inscrire les participants.</p>
+
+{% if erreur %}
+<div class="erreur">{{ erreur }}</div>
+{% endif %}
+
+<div class="carte">
+    <form method="POST">
+        <div class="form-group">
+            <label>Nom du tournoi</label>
+            <input type="text" name="nom" placeholder="Ex : E-Sport Championship 2025">
+        </div>
+
+        <div class="form-group">
+            <label>Type de participants</label>
+            <select name="type_participant">
+                <option value="joueurs">Joueurs individuels</option>
+                <option value="equipes">Equipes</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Sport</label>
+            <select name="sport">
+                <optgroup label="── Sports Classiques ──">
+                    {% for sport in sports %}
+                    {% if loop.index <= 17 %}
+                    <option value="{{ sport }}">{{ sport }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </optgroup>
+                <optgroup label="── E-Sports ──">
+                    {% for sport in sports %}
+                    {% if loop.index > 17 %}
+                    <option value="{{ sport }}">{{ sport }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre de participants</label>
+            <input type="number" name="nb_participants" placeholder="Minimum 2" min="2">
+        </div>
+
+        <div class="btn-groupe">
+            <button type="submit" class="btn btn-rouge">Suivant →</button>
+            <a href="/" class="btn btn-contour">Retour</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

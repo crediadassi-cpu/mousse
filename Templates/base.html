@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournoi E-Sport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --noir: #0d0d0d;
+            --rouge: #e63946;
+            --gris-fonce: #1a1a1a;
+            --gris-moyen: #2a2a2a;
+            --gris-clair: #3a3a3a;
+            --texte: #0000ff;
+            --texte-doux: #999;
+            --blanc: #ffffff;
+            --bleu: #0000ff;
+            --orange: #ffa500;
+            --vert: #00ff00;
+            --violet: #800080;
+            --rose:  #ffc0cb;
+            --marron: #a52a2a;
+            --gris: #808080;
+            --cyan: #00ffff;
+            --magenta: #ff00ff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--blanc);
+            color: var(--texte);
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        nav {
+            background-color: var(--gris-fonce);
+            border-bottom: 1px solid var(--gris-moyen);
+            padding: 18px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--blanc);
+        }
+
+        .logo span { color: var(--bleu); }
+
+        nav a {
+            font-size: 13px;
+            color: var(--texte-doux);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--orange); }
+
+        /* CONTAINER */
+        .container {
+            max-width: 680px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        /* TITRE */
+        h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: var(--bleu);
+        }
+
+        .sous-titre {
+            font-size: 13px;
+            color: var(--gris);
+            letter-spacing: 1px;
+            margin-bottom: 35px;
+        }
+
+        .trait {
+            width: 40px;
+            height: 3px;
+            background-color: var(--vert);
+            margin-bottom: 30px;
+        }
+
+        /* CARTE */
+        .carte {
+            background-color: var(--cyan);
+            border: 1px solid var(--rose);
+            border-radius: 4px;
+            padding: 32px;
+            margin-bottom: 16px;
+        }
+
+        /* FORMULAIRE */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--rose);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--orange);
+            border: 1px solid var(--marron);
+            border-radius: 3px;
+            color: var(--texte);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23999' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--rouge);
+        }
+
+        .form-group select option {
+            background-color: var(--gris-moyen);
+            color: var(--texte);
+        }
+
+        /* BOUTONS */
+        .btn {
+            display: inline-block;
+            padding: 13px 30px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-rouge {
+            background-color: var(--marron);
+            color: white;
+        }
+        .btn-rouge:hover { background-color: #5c2ed9ff; }
+
+        .btn-contour {
+            background-color: transparent;
+            border: 1px solid var(--gris-clair);
+            color: var(--texte-doux);
+        }
+        .btn-contour:hover {
+            border-color: var(--violet);
+            color: var(--blanc);
+        }
+
+        /* ERREUR */
+        .erreur {
+            background-color: rgba(230, 57, 70, 0.1);
+            border-left: 3px solid var(--rouge);
+            padding: 12px 16px;
+            margin-bottom: 22px;
+            font-size: 13px;
+            color: var(--rouge);
+            border-radius: 2px;
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            background-color: var(--rouge);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 2px;
+        }
+
+        /* LISTE PARTICIPANTS */
+        .participant {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--orange);
+            font-size: 14px;
+        }
+        .participant:last-child { border-bottom: none; }
+
+        .num {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--rouge);
+            width: 24px;
+        }
+
+        /* MATCH */
+        .match-ligne {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--gris-moyen);
+            font-size: 14px;
+        }
+        .match-ligne:last-child { border-bottom: none; }
+
+        .score-box {
+            background-color: var(--gris-moyen);
+            color: var(--blanc);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 3px;
+            letter-spacing: 2px;
+        }
+
+        .gagnant-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--rouge);
+            text-transform: uppercase;
+        }
+
+        /* VAINQUEUR */
+        .vainqueur-box {
+            background: linear-gradient(135deg, var(--gris-fonce), var(--gris-moyen));
+            border: 1px solid var(--rouge);
+            border-radius: 4px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .vainqueur-box .trophee {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .vainqueur-box h2 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: var(--texte-doux);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .vainqueur-box .nom {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--rouge);
+            letter-spacing: 2px;
+        }
+
+        /* INFO BARRE */
+        .info-barre {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: var(--texte-doux);
+            text-transform: uppercase;
+        }
+
+        .info-item strong {
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--blanc);
+            margin-top: 2px;
+        }
+
+        /* BOUTONS GROUPES */
+        .btn-groupe {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* BYE */
+        .bye {
+            font-size: 12px;
+            color: var(--texte-doux);
+            padding: 10px 0;
+            letter-spacing: 1px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TOURNOI <span>E-SPORT</span></div>
+        <a href="/">← Accueil</a>
+    </nav>
+
+    <div class="container">
+        {% block contenu %}{% endblock %}
+    </div>
+</body>
+</html>
