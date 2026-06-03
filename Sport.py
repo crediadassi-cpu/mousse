@@ -30,10 +30,12 @@ SPORTS_DISPONIBLES =[
     "Overwatch",
     
 ]
-NIVEAUX_DISPONIBLES = [
+NIVEAUX_DISPONIBLES =[
     "Débutant",
     "Intermédiaire",
-    "Avancé"
+    "Avancé",
+     "Expert",
+    "Professionnel",
     ]
 
 
